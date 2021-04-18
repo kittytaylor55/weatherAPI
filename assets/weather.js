@@ -99,15 +99,15 @@ function initPage() {
   
             const forecastIndex = i * 8 + 4;
             const forecastDate = new Date(
-              response.data.list[forecastIndex].dt * 1000;
-              console.log(currentDate);
-            );
+              response.data.list[forecastIndex].dt * 1000)
+              console.log(currentDate)
+           
             //WHEN I view current weather conditions for that city
             //THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
 
 
             const forecastDay = forecastDate.getDate();
-            const forecastMonth = forecastDate.getMonth();
+            const forecastMonth = forecastDate.getMonth() +1;
             const forecastYear = forecastDate.getFullYear();
             const forecastDateEl = document.createElement("p");
   
