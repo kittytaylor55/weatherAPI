@@ -24,6 +24,11 @@ Then I added the 5 day forecast.
 
 <img src="https://kittytaylor55.github.io/weatherAPI/assets/images/5dayadded.png" alt="screen shot of 5 day forcast"/>
 
+I kept trying to change the constant for the weather, but I couldn't get all dates to change, it would either be off by a month, or all say the same current date.  
+
+
+<img src="https://kittytaylor55.github.io/weatherAPI/assets/images/error.png" alt="screen shot of inspect"/>
+
 
 
 
