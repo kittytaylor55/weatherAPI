@@ -99,7 +99,8 @@ function initPage() {
   
             const forecastIndex = i * 8 + 4;
             const forecastDate = new Date(
-              response.data.list[forecastIndex].dt * 1000
+              response.data.list[forecastIndex].dt * 1000;
+              console.log(currentDate);
             );
             //WHEN I view current weather conditions for that city
             //THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
@@ -113,7 +114,7 @@ function initPage() {
             
             
             
-            forecastDateEl.setAttribute("class", "mt-3 mb-5 forecastDate");
+            forecastDateEl.setAttribute("class", "mt-3 mb-0 forecastDate");
             forecastDateEl.innerHTML =
               forecastMonth + "/" + forecastDay + "/" + forecastYear;
             forecastEl[i].append(forecastDateEl);
