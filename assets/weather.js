@@ -5,9 +5,8 @@
 
 /* WHEN I search for a city
 THEN I am presented with current and future conditions for that city and that city is added to the search history
-WHEN I view current weather conditions for that city
-THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-WHEN I view the UV index
+
+
 THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
 WHEN I view future weather conditions for that city
 THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity
@@ -79,6 +78,10 @@ function initPage() {
           let uvIndex = document.createElement("span");
           uvIndex.setAttribute("class", "badge badge-danger");
           uvIndex.innerHTML = response.data[0].value;
+
+//WHEN I view the UV index
+//THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
+
           currentUVEl.innerHTML = "UV Index: ";
           currentUVEl.append(uvIndex);
         });
@@ -98,13 +101,19 @@ function initPage() {
             const forecastDate = new Date(
               response.data.list[forecastIndex].dt * 1000
             );
-  
+            //WHEN I view current weather conditions for that city
+            //THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
+
+
             const forecastDay = forecastDate.getDate();
             const forecastMonth = forecastDate.getMonth();
             const forecastYear = forecastDate.getFullYear();
             const forecastDateEl = document.createElement("p");
   
-            forecastDateEl.setAttribute("class", "mt-3 mb-0 forecastDate");
+            
+            
+            
+            forecastDateEl.setAttribute("class", "mt-3 mb-5 forecastDate");
             forecastDateEl.innerHTML =
               forecastMonth + "/" + forecastDay + "/" + forecastYear;
             forecastEl[i].append(forecastDateEl);
@@ -153,7 +162,7 @@ function initPage() {
       renderSearchHistory();
     });
   
-    // Kelvin to Farenheit
+    // Convert K to F
     function k2f(K) {
       return Math.floor((K - 273.15) * 1.8 + 32);
     }
@@ -181,3 +190,4 @@ function initPage() {
     }
   }
   initPage();
+  
