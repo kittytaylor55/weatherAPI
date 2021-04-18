@@ -11,6 +11,6 @@ Used https://home.openweathermap.org/api_keys to get a weather API key.
 
 --Screen shots-- 
 
-<img src="https://kittytaylor55.github.io/weatherAPI/assets/images/5added.png" />
+<img src="./assets/images/5added.png" />
 
 --Contact-- Crystal Taylor kittytaylor@gmail.com
