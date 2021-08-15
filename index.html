@@ -1,110 +1,98 @@
-<!--![The weather app includes a search option, a list of cities, 
-    and a five-day forecast and current weather conditions for Atlanta.]
-    (./Assets/06-server-side-apis-homework-demo.png)-->
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <link
-          rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
-        />
-        <link rel="stylesheet" href="./assets/main.css" />
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
         <title>Weather Dashboard</title>
-      </head>
-      <body>
-        <nav class="navbar navbar-dark bg-dark">
-          <span class="navbar-brand mb-0 h1 w-100 text-center"
-            >Weather Dashboard</span
-          >
-        </nav>
+    </head>
+    <body>
+        
         <div class="container">
-          <div class="row">
-            <div class="col-4 bg-light">
-              <p class="searchHeader my-1">Search for a city:</p>
-              <div class="input-group mb-3">
-                <input
-                  id="cityInput"
-                  type="text"
-                  class="form-control"
-                  placeholder=""
-                  aria-label=""
-                />
-                <div class="input-group-append">
-                  <button class="btn btn-primary" type="button" id="searchButton">
-                    <i class="fas fa-search"></i>
-                  </button>
+            <div class="current-info">
+    
+                <div class="date-container">
+                    <div class="time" id="time">
+                        11:30 <span id="am-pm">PM</span>
+                    </div>
+                    <div class="date" id="date">
+                        Friday, 25 September
+                    </div>
+    
+                    <div class="others" id="current-weather-items">
+                        
+                        
+                    </div>
                 </div>
-              </div>
-              <button class="btn btn-primary mb-3" type="button" id="clearHistory">
-                Clear history
-              </button>
-              <form id="history"></form>
+    
+                <div class="place-container">
+                    <div class="time-zone" id="time-zone">North America</div>
+                    <div id="country" class="country">US</div>
+                </div>
             </div>
-            <div class="col-8">
-              <div class="row mr-0">
-                <div class="col-12 border border-dark m-3 rounded">
-                  <div class="row">
-                    <div class="col-12">
-                      <span id="cityName" class="city-name align-middle"></span>
-                      <img id="currentPicture" src="placeholder" alt="" />
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-12">
-                      <p id="temperature"></p>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-12">
-                      <p id="humidity"></p>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-12">
-                      <p id="windSpeed"></p>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-12">
-                      <p id="uvIndex"></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <h3>5-Day Forecast:</h3>
-                </div>
-              </div>
-              <div class="row">
-                <div
-                  class="col forecast bg-primary text-white ml-3 mb-3 rounded"
-                ></div>
-                <div
-                  class="col forecast bg-primary text-white ml-3 mb-3 rounded"
-                ></div>
-                <div
-                  class="col forecast bg-primary text-white ml-3 mb-3 rounded"
-                ></div>
-                <div
-                  class="col forecast bg-primary text-white ml-3 mb-3 rounded"
-                ></div>
-                <div
-                  class="col forecast bg-primary text-white ml-3 mb-3 rounded"
-                ></div>
-              </div>
-            </div>
-          </div>
+            <div class="city-search">
+                <form id="user-form" class="card-body">
+                  <label class="form-label" for="cityname">Search for weather by city</label><br>
+                  <input name="cityname" id="cityname" type="text" autofocus="true" class="form-input" />
+                  <button type="submit" class="btn">Submit</button>
+                </form>
+              </div> 
+            
         </div>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script src="./assets/weather.js"></script>
-      </body>
-    </html>
+        <div class="future-forecast">
+            <div class="today" id="current-temp">   
+                <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
+                <div class="other">
+                    <div class="day">Monday</div>
+                    <div class="temp">Night - 65.0&#176; F</div>
+                    <div class="temp">Day - 80.0&#176; F</div>
+                </div>
+            </div>
+            <div class="weather-forecast" id="weather-forecast">
+                <div class="weather-forecast-item">
+                    <div class="day">Tue</div>
+                    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
+                    <div class="temp">Night - 65.0&#176; F</div>
+                    <div class="temp">Day - 75.0&#176; F</div>
+                </div>
+                <div class="weather-forecast-item">
+                    <div class="day">Wed</div>
+                    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
+                    <div class="temp">Night - 65.0&#176; F</div>
+                    <div class="temp">Day - 75.0&#176; F</div>
+                </div>
+                <div class="weather-forecast-item">
+                    <div class="day">Thur</div>
+                    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
+                    <div class="temp">Night - 65.0&#176; F</div>
+                    <div class="temp">Day - 75.0&#176; F</div>
+                </div>
+                <div class="weather-forecast-item">
+                    <div class="day">Fri</div>
+                    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
+                    <div class="temp">Night - 65.0&#176; F</div>
+                    <div class="temp">Day - 75.0&#176; F</div>
+                </div>
+                <div class="weather-forecast-item">
+                    <div class="day">Sat</div>
+                    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
+                    <div class="temp">Night - 65.0&#176; F</div>
+                    <div class="temp">Day - 75.0&#176; F</div>
+                </div>
+    
+            </div> 
+        </div>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        
+        <script src="./script.js"></script>
+ 
+
+
+
+
+
+
+</body>
+</html>
